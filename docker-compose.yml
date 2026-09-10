@@ -1,0 +1,12 @@
+########################### NETWORKS
+networks:
+  default:
+    driver: bridge
+
+########################### SERVICES
+include:
+  - jellyfin.yml
+  - radarr.yml
+  - sonarr.yml
+  - bazarr.yml
+  - seerr.yml

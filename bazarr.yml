@@ -1,0 +1,17 @@
+services:
+  # Bazarr - Subtitle Management
+  bazarr:
+    image: lscr.io/linuxserver/bazarr
+    container_name: bazarr
+    security_opt:
+      - no-new-privileges:true
+    restart: "no"
+    networks:
+      - default
+    ports:
+      - "6767:6767"
+    volumes:
+      - $DOCKERDIR/bazarr:/config
+      - $MEDIADIR:/data/media
+    environment:
+      TZ: $TZ

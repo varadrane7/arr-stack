@@ -1,0 +1,17 @@
+services:
+  # Radarr - Movies Management
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    security_opt:
+      - no-new-privileges:true
+    restart: "no"
+    networks:
+      - default
+    ports:
+      - "7878:7878"
+    volumes:
+      - $DOCKERDIR/radarr:/config
+      - $MEDIADIR:/data/media
+    environment:
+      TZ: $TZ
