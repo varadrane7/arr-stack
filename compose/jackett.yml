@@ -1,0 +1,13 @@
+services:
+  jackett:
+    image: lscr.io/linuxserver/jackett:latest
+    container_name: jackett
+    network_mode: "service:gluetun"
+    environment:
+      - PUID=$PUID
+      - PGID=$PGID
+      - TZ=$TZ
+      # - AUTO_UPDATE=true
+    volumes:
+      - $DOCKERDIR/jackett:/config
+    restart: unless-stopped

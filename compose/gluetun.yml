@@ -1,0 +1,26 @@
+services:
+  gluetun:
+    image: qmcgaw/gluetun
+    cap_add:
+      - NET_ADMIN
+    networks:
+      - default
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    secrets:
+      - nordvpn_user
+      - nordvpn_pass
+    environment:
+      - VPN_SERVICE_PROVIDER=nordvpn
+      - VPN_TYPE=openvpn # or wireguard
+      - OPENVPN_USER=/run/secrets/nordvpn_user
+      - OPENVPN_PASSWORD=/run/secrets/nordvpn_pass
+      - SERVER_COUNTRIES=Sweden
+      - TZ=$TZ
+      - FIREWALL_OUTBOUND_SUBNETS=192.168.1.0/24,172.19.0.0/16
+    ports:
+      - '8080:8080' # qbittorrent webui
+      - '6881:6881' # qbittorrent torrenting port
+      - '6881:6881/udp' # qbittorrent torrenting port
+      - '9117:9117' # jackett webui
+      - '8191:8191' # flaresolverr

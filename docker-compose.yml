@@ -2,6 +2,11 @@
 networks:
   default:
     driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.19.0.0/16
+          gateway: 172.19.0.1
 
 ########################### SERVICES
 include:
@@ -10,3 +15,14 @@ include:
   - sonarr.yml
   - bazarr.yml
   - seerr.yml
+  - qbittorrent.yml
+  - jackett.yml
+  - flaresolverr.yml
+  - gluetun.yml
+
+
+secrets:
+  nordvpn_user:
+    file: /home/varadrane7/coding/arr-stack/secrets/nordvpn_user
+  nordvpn_pass:
+    file: /home/varadrane7/coding/arr-stack/secrets/nordvpn_pass
