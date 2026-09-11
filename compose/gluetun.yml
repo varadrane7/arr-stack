@@ -1,20 +1,18 @@
 services:
   gluetun:
     image: qmcgaw/gluetun
+    container_name: gluetun
     cap_add:
       - NET_ADMIN
     networks:
       - default
     devices:
       - /dev/net/tun:/dev/net/tun
-    secrets:
-      - nordvpn_user
-      - nordvpn_pass
     environment:
       - VPN_SERVICE_PROVIDER=nordvpn
       - VPN_TYPE=openvpn # or wireguard
-      - OPENVPN_USER=/run/secrets/nordvpn_user
-      - OPENVPN_PASSWORD=/run/secrets/nordvpn_pass
+      - OPENVPN_USER=$OPENVPN_USERNAME
+      - OPENVPN_PASSWORD=$OPENVPN_PASSWORD
       - SERVER_COUNTRIES=Sweden
       - TZ=$TZ
       - FIREWALL_OUTBOUND_SUBNETS=192.168.1.0/24,172.19.0.0/16

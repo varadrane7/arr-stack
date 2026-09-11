@@ -12,6 +12,8 @@ services:
       - "8989:8989"
     volumes:
       - $DOCKERDIR/sonarr:/config
-      - $MEDIADIR:/data/media
+      - $MEDIADIR:/media
     environment:
+      PUID: $PUID
+      PGID: $PGID
       TZ: $TZ

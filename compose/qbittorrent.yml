@@ -11,6 +11,6 @@ services:
       - TORRENTING_PORT=6881
     volumes:
       - $DOCKERDIR/qbittorrent:/config
-      - $MEDIADIR:/data/media
+      - $MEDIADIR/torrents:/media/torrents
     stop_grace_period: "10s" #otional
     restart: unless-stopped

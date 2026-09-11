@@ -8,6 +8,8 @@ services:
     security_opt:
       - no-new-privileges:true
     environment:
+      PUID: $PUID
+      PGID: $PGID
       TZ: $TZ
     ports:
       - "5055:5055"

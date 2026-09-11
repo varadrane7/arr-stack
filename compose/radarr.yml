@@ -12,6 +12,8 @@ services:
       - "7878:7878"
     volumes:
       - $DOCKERDIR/radarr:/config
-      - $MEDIADIR:/data/media
+      - $MEDIADIR:/media
     environment:
+      PUID: $PUID
+      PGID: $PGID
       TZ: $TZ

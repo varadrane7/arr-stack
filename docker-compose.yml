@@ -10,19 +10,12 @@ networks:
 
 ########################### SERVICES
 include:
-  - jellyfin.yml
-  - radarr.yml
-  - sonarr.yml
-  - bazarr.yml
-  - seerr.yml
-  - qbittorrent.yml
-  - jackett.yml
-  - flaresolverr.yml
-  - gluetun.yml
-
-
-secrets:
-  nordvpn_user:
-    file: /home/varadrane7/coding/arr-stack/secrets/nordvpn_user
-  nordvpn_pass:
-    file: /home/varadrane7/coding/arr-stack/secrets/nordvpn_pass
+  - compose/jellyfin.yml
+  - compose/radarr.yml
+  - compose/sonarr.yml
+  - compose/bazarr.yml
+  - compose/seerr.yml
+  - compose/qbittorrent.yml
+  - compose/jackett.yml
+  - compose/flaresolverr.yml
+  - compose/gluetun.yml
